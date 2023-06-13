@@ -8,16 +8,20 @@ body {
   font-weight: 800;
 }
 
+/*.para and .small-para had same specifty, inheritance not helpful, so application of properties is based on rule order
+-> last selector .para was applied -> swapped order of .para and .small-para*/
+.para {
+  font-size: 22px;
+}
+
 .small-para {
   font-size: 14px;
   font-weight: 800;
 }
 
-.para {
-  font-size: 22px;
-}
-
-.confirm {
+/* .confirm had same specificity as .button, so application of properties is based on rule order 
+-> .button was applied -> added more specificity to .confirm by having .button.confirm*/
+.button.confirm {
   background: green;
   color: white;
   font-weight: bold;
@@ -29,7 +33,11 @@ body {
   font-size: 20px;
 }
 
-.child {
+/* div.text has more specificity that .child as it is made up of a type selector plus a class selector, and this
+beats a single class selector on its own -> more specific selector div.text was applied
+-> add more specificty to .child by having .text .child and now
+since we would have two class selectors, the latter will have more specificity than div.text */
+.text .child {
   color: rgb(0, 0, 0);
   font-weight: 800;
   font-size: 14px;
